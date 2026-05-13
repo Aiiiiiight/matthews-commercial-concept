@@ -47,7 +47,8 @@
       statusKey: 'sale',
       size: 'Car dealership · 2-bay garage',
       price: '$1,500,000',
-      tone: 'retail'
+      tone: 'retail',
+      coords: [41.575, -73.034]
     },
     {
       title: '15 Nutmeg Valley Road',
@@ -58,7 +59,8 @@
       statusKey: 'lease',
       size: '7,400 SF',
       price: '$9.50 / SF + utilities',
-      tone: 'industrial'
+      tone: 'industrial',
+      coords: [41.606, -72.983]
     },
     {
       title: '659 Middlebury Road',
@@ -69,7 +71,8 @@
       statusKey: 'sale',
       size: '2.64 Acres',
       price: '$449,900 sale · $50K/yr lease',
-      tone: 'land'
+      tone: 'land',
+      coords: [41.529, -73.111]
     },
     {
       title: '955 Wolcott Road',
@@ -80,7 +83,8 @@
       statusKey: 'sale',
       size: '16,199 SF · 2.64 acres',
       price: '$1,125,000',
-      tone: 'industrial'
+      tone: 'industrial',
+      coords: [41.595, -72.984]
     },
     {
       title: '509 Wolcott Road',
@@ -91,7 +95,8 @@
       statusKey: 'sale',
       size: '3,260 SF',
       price: '$595,000',
-      tone: 'medical'
+      tone: 'medical',
+      coords: [41.585, -72.985]
     },
     {
       title: '650 Wolcott Street',
@@ -102,7 +107,8 @@
       statusKey: 'lease',
       size: '9,417 SF',
       price: '$9.95 / SF + nets',
-      tone: 'retail'
+      tone: 'retail',
+      coords: [41.565, -73.018]
     },
     {
       title: '714 Chase Parkway',
@@ -113,7 +119,8 @@
       statusKey: 'lease',
       size: '4,403 SF',
       price: '$21.25 / SF gross',
-      tone: 'medical'
+      tone: 'medical',
+      coords: [41.536, -73.074]
     },
     {
       title: '572 Watertown Avenue',
@@ -124,7 +131,8 @@
       statusKey: 'sale',
       size: 'Restaurant + income property',
       price: '$1,700,000',
-      tone: 'restaurant'
+      tone: 'restaurant',
+      coords: [41.571, -73.058]
     },
     {
       title: '2590 Berlin Turnpike',
@@ -135,7 +143,8 @@
       statusKey: 'lease',
       size: 'Unit 2',
       price: '$3,487.50 / mo + utilities',
-      tone: 'industrial'
+      tone: 'industrial',
+      coords: [41.618, -72.749]
     }
   ];
 
@@ -240,6 +249,86 @@
     grid.innerHTML = properties.map(cardHTML).join('');
   }
 
+  /* ------- Real maps: active listings + market footprint ------- */
+  var propertyMarkerRecords = [];
+
+  function tileLayer() {
+    return L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    });
+  }
+
+  function markerIcon(className) {
+    return L.divIcon({
+      className: '',
+      html: '<span class="map-pin ' + (className || '') + '"></span>',
+      iconSize: [18, 18],
+      iconAnchor: [9, 9],
+      popupAnchor: [0, -8]
+    });
+  }
+
+  function initPropertyMap() {
+    var el = document.getElementById('propertyMap');
+    if (!el || !window.L) return;
+
+    var map = L.map(el, {
+      scrollWheelZoom: false,
+      zoomControl: true
+    });
+    window.propertyMapInstance = map;
+    tileLayer().addTo(map);
+
+    propertyMarkerRecords = properties.map(function (p) {
+      var marker = L.marker(p.coords, { icon: markerIcon('') })
+        .bindPopup('<strong>' + p.title + '</strong>' + p.city + ', CT<br />' + p.typeLabel + '<br />' + p.price)
+        .addTo(map);
+      return { type: p.type, marker: marker };
+    });
+
+    map.fitBounds(L.featureGroup(propertyMarkerRecords.map(function (r) { return r.marker; })).getBounds(), {
+      padding: [26, 26]
+    });
+  }
+
+  function initMarketMap() {
+    var el = document.getElementById('marketMap');
+    if (!el || !window.L) return;
+
+    var markets = [
+      ['Waterbury', 41.558, -73.051],
+      ['Wolcott', 41.602, -72.986],
+      ['Middlebury', 41.527, -73.126],
+      ['Southbury', 41.481, -73.213],
+      ['Prospect', 41.502, -72.978],
+      ['Cheshire', 41.498, -72.901],
+      ['Berlin', 41.621, -72.746],
+      ['Wallingford', 41.457, -72.823],
+      ['Bridgeport', 41.179, -73.189],
+      ['Clinton', 41.278, -72.527]
+    ];
+
+    var map = L.map(el, {
+      scrollWheelZoom: false,
+      zoomControl: true
+    });
+    tileLayer().addTo(map);
+
+    var markers = markets.map(function (m) {
+      return L.marker([m[1], m[2]], { icon: markerIcon('market-pin') })
+        .bindPopup('<strong>' + m[0] + '</strong>Connecticut market')
+        .addTo(map);
+    });
+
+    map.fitBounds(L.featureGroup(markers).getBounds(), { padding: [30, 30] });
+  }
+
+  if (window.L) {
+    initPropertyMap();
+    initMarketMap();
+  }
+
   /* ------- Filter chips ------- */
   var chips = document.querySelectorAll('.chip');
   chips.forEach(function (chip) {
@@ -255,6 +344,16 @@
         var t = card.getAttribute('data-type');
         var show = filter === 'all' || t === filter;
         card.classList.toggle('is-hidden', !show);
+      });
+      propertyMarkerRecords.forEach(function (record) {
+        if (!window.propertyMapInstance) return;
+        var show = filter === 'all' || record.type === filter;
+        if (show && !record.marker._map) {
+          record.marker.addTo(window.propertyMapInstance);
+        }
+        if (!show && record.marker._map) {
+          window.propertyMapInstance.removeLayer(record.marker);
+        }
       });
     });
   });

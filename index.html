@@ -38,6 +38,10 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -180,25 +184,25 @@
         </div>
       </section>
 
-      <!-- EARLY PROOF -->
-      <section class="proof-teaser" aria-label="Recent proof">
+      <!-- WORKING STYLE -->
+      <section class="proof-teaser" aria-label="How Matthews works">
         <div class="container proof-teaser-grid">
           <div class="proof-teaser-copy">
-            <span class="kicker">Local judgment in action</span>
-            <h2>Proof that goes beyond putting a sign on the building.</h2>
+            <span class="kicker">How the firm works</span>
+            <h2>Small enough to know the assignment. Experienced enough to move it.</h2>
           </div>
           <div class="proof-teaser-cards">
             <article>
-              <strong>60,000 SF</strong>
-              <span>Southbury office building taken from 50% vacant to fully leased in 14 months.</span>
+              <strong>Broker-led</strong>
+              <span>Every call goes to a Connecticut licensed broker, not a sales desk or junior handoff.</span>
             </article>
             <article>
-              <strong>4 facilities</strong>
-              <span>Assisted living facility sales across Bridgeport, Waterbury, and Clinton.</span>
+              <strong>Local and practical</strong>
+              <span>Advice is grounded in the buildings, owners, tenants, trades, and timing in this market.</span>
             </article>
             <article>
-              <strong>2 strategies</strong>
-              <span>Former Big Lots spaces solved through subdivision, leasing, and a condo sale.</span>
+              <strong>Repeat-client driven</strong>
+              <span>Most assignments come from people who have trusted the firm before and call again.</span>
             </article>
           </div>
         </div>
@@ -307,6 +311,18 @@
               <button class="chip" role="tab" aria-selected="false" data-filter="investment">Investment</button>
             </div>
           </header>
+
+          <div class="property-map-panel">
+            <div class="property-map-copy">
+              <span class="kicker kicker-light">Map view</span>
+              <h3>Featured opportunities by location</h3>
+              <p>
+                A working map concept for active listings. In the final build, pins would be driven by
+                the CMS and filtered by property type, status, city, and broker.
+              </p>
+            </div>
+            <div id="propertyMap" class="property-real-map" aria-label="Interactive map of featured active properties"></div>
+          </div>
 
           <div class="property-grid" id="propertyGrid">
             <!-- cards rendered by JS for filtering -->
@@ -438,39 +454,7 @@
           </header>
 
           <div class="geo-grid">
-            <div class="geo-map" aria-label="Stylized regional map showing Western Connecticut coverage">
-              <!-- Abstract parcel-line motif map -->
-              <svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" role="img">
-                <defs>
-                  <pattern id="parcel" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M0 .5H40M.5 0V40" fill="none" stroke="currentColor" stroke-opacity=".18" />
-                  </pattern>
-                  <pattern id="parcel2" width="160" height="160" patternUnits="userSpaceOnUse">
-                    <path d="M0 .5H160M.5 0V160" fill="none" stroke="currentColor" stroke-opacity=".25" />
-                  </pattern>
-                </defs>
-                <rect width="640" height="480" fill="url(#parcel)" />
-                <rect width="640" height="480" fill="url(#parcel2)" />
-                <!-- I-84 / I-91 / Route 8 abstract -->
-                <path d="M30 230 Q200 200 320 235 T620 220" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="0" opacity=".8" />
-                <path d="M260 30 Q280 230 320 470" fill="none" stroke="var(--gold)" stroke-width="2" opacity=".55" />
-                <path d="M120 30 Q160 240 180 470" fill="none" stroke="var(--gold)" stroke-width="1.6" opacity=".4" />
-
-                <!-- City dots -->
-                <g class="geo-pins" font-family="Inter, sans-serif" font-size="12" fill="currentColor">
-                  <g><circle cx="180" cy="200" r="6" fill="currentColor" /><text x="192" y="204">Waterbury</text></g>
-                  <g><circle cx="240" cy="170" r="4" fill="currentColor" /><text x="250" y="174">Wolcott</text></g>
-                  <g><circle cx="140" cy="200" r="4" fill="currentColor" /><text x="60" y="204" text-anchor="end">Middlebury</text></g>
-                  <g><circle cx="130" cy="160" r="4" fill="currentColor" /><text x="50" y="164" text-anchor="end">Southbury</text></g>
-                  <g><circle cx="220" cy="225" r="4" fill="currentColor" /><text x="232" y="229">Prospect</text></g>
-                  <g><circle cx="260" cy="240" r="4" fill="currentColor" /><text x="272" y="244">Cheshire</text></g>
-                  <g><circle cx="350" cy="240" r="4" fill="currentColor" /><text x="362" y="244">Berlin</text></g>
-                  <g><circle cx="380" cy="210" r="4" fill="currentColor" /><text x="392" y="214">Wallingford</text></g>
-                  <g><circle cx="290" cy="370" r="5" fill="currentColor" /><text x="302" y="374">Bridgeport</text></g>
-                  <g><circle cx="520" cy="345" r="4" fill="currentColor" /><text x="448" y="349" text-anchor="end">Clinton</text></g>
-                </g>
-              </svg>
-            </div>
+            <div id="marketMap" class="geo-map real-map" aria-label="Interactive map showing Western Connecticut coverage"></div>
 
             <div class="geo-copy">
               <div class="geo-block">
@@ -717,6 +701,10 @@
       </div>
     </footer>
 
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      defer
+    ></script>
     <script src="js/main.js" defer></script>
   </body>
 </html>
