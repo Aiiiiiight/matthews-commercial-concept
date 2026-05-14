@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Active Properties — Matthews Commercial Properties</title>
-    <meta name="description" content="A page concept for Matthews Commercial Properties active listings with filterable property cards and a listing map." />
+    <meta name="description" content="Active commercial properties from Matthews Commercial Properties, including listings, map locations, photos, and broker contact." />
     <meta name="theme-color" content="#0f2942" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,7 +30,20 @@
         <div class="header-cta">
           <a class="phone-link" href="tel:+12037535800"><span class="phone-dot" aria-hidden="true"></span>(203) 753&#8209;5800</a>
           <a class="btn btn-primary" href="connecticut-reach.html#contact">Talk to a broker</a>
+          <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
         </div>
+      </div>
+      <div class="mobile-nav" id="mobileNav" hidden>
+        <ul>
+          <li><a href="properties-connecticut.html">Properties</a></li>
+          <li><a href="connecticut-reach.html#services">Services</a></li>
+          <li><a href="transactions-connecticut.html">Recent Transactions</a></li>
+          <li><a href="brokers-connecticut.html">Brokers</a></li>
+          <li><a href="connecticut-reach.html#about">About</a></li>
+          <li><a href="connecticut-reach.html#contact">Contact</a></li>
+        </ul>
       </div>
     </header>
 
@@ -38,13 +51,12 @@
       <section class="subpage-hero">
         <div class="container">
           <span class="kicker">Properties</span>
-          <h1>Active listings should have their own searchable page.</h1>
+          <h1>Active commercial properties.</h1>
           <p>
-            The homepage can show a few featured listings, but buyers, tenants, and investors need a
-            dedicated inventory page with photos, map pins, property facts, brochures, and direct
-            broker contact.
+            Browse current opportunities by property type, location, size, and status. For the most
+            current availability or off-market context, call Matthews directly.
           </p>
-          <nav class="subpage-tabs" aria-label="Page concepts">
+          <nav class="subpage-tabs" aria-label="Site pages">
             <a class="is-active" href="properties-connecticut.html">Properties</a>
             <a href="transactions-connecticut.html">Transactions</a>
             <a href="brokers-connecticut.html">Brokers</a>
@@ -58,10 +70,10 @@
           <header class="section-head section-head-row">
             <div>
               <span class="kicker kicker-light">Listing search</span>
-              <h2>Map, filters, photos, and shareable property pages.</h2>
+              <h2>Map, filters, photos, and property facts.</h2>
               <p class="section-lead">
-                This page would eventually be CMS-driven. Brokers should be able to add a property,
-                upload photos and a brochure, assign a broker, and publish without developer help.
+                Use the map and property cards to review featured opportunities. Each listing should
+                make the important details easy to scan before a call.
               </p>
             </div>
             <div class="filter-bar" role="tablist" aria-label="Filter properties by type">
@@ -76,8 +88,8 @@
           <div class="property-map-panel">
             <div class="property-map-copy">
               <span class="kicker kicker-light">Map view</span>
-              <h3>Clients can browse by location, not a town menu.</h3>
-              <p>Map pins should filter with the cards and each property should have its own shareable URL.</p>
+              <h3>Browse by location, not a town menu.</h3>
+              <p>Map pins and listing cards work together so clients can quickly understand where current opportunities sit.</p>
             </div>
             <div id="propertyMap" class="property-real-map" aria-label="Interactive map of featured active properties"></div>
           </div>
@@ -88,7 +100,7 @@
       <section class="subpage-section">
         <div class="container subpage-grid-two">
           <article class="subpage-panel">
-            <h2>Property detail page fields</h2>
+            <h2>What each listing should show</h2>
             <ul class="detail-list">
               <li><span>Status</span><strong>For Sale / For Lease</strong></li>
               <li><span>Facts</span><strong>Type, size, price, zoning</strong></li>
@@ -97,13 +109,13 @@
             </ul>
           </article>
           <article class="subpage-panel">
-            <h2>CMS priority</h2>
+            <h2>Need the full inventory?</h2>
             <p>
-              The property workflow should be the easiest part of the CMS. If adding listings is
-              slow, the inventory will go stale. The final build should prioritize quick editing,
-              clean photo uploads, brochure replacement, and draft/publish control.
+              Public listings are only part of the market. Call Matthews for current availability,
+              coming opportunities, tenant requirements, and properties that may not be broadly
+              marketed.
             </p>
-            <a class="btn btn-primary" href="connecticut-reach.html#contact">Contact concept section</a>
+            <a class="btn btn-primary" href="connecticut-reach.html#contact">Talk to a broker</a>
           </article>
         </div>
       </section>
