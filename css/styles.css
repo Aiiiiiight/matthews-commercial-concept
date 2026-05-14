@@ -713,7 +713,14 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: var(--cream);
   color: var(--ink);
 }
-.property-img svg { width: 100%; height: 100%; }
+.property-img svg,
+.property-img img {
+  width: 100%;
+  height: 100%;
+}
+.property-img img {
+  object-fit: cover;
+}
 .property-status {
   position: absolute; top: 12px; left: 12px;
   background: var(--ink);
@@ -835,6 +842,46 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* ============== CASE STUDIES ============== */
 .case-stack { display: flex; flex-direction: column; gap: var(--s-7); }
+.transaction-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-2);
+  border: 1px solid var(--rule-2);
+  margin-bottom: var(--s-7);
+}
+.transaction-list article {
+  background: var(--paper);
+  padding: var(--s-5);
+  min-height: 178px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.transaction-list span {
+  align-self: flex-start;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 3px;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.transaction-list strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.transaction-list em {
+  color: var(--text-muted);
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.55;
+}
 .case {
   background: var(--paper);
   border: 1px solid var(--rule);
@@ -1239,6 +1286,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: 12px;
   color: rgba(245, 241, 234, 0.45);
 }
+.footer-meta a { color: rgba(245, 241, 234, 0.72); }
+.footer-meta a:hover { color: var(--cream); }
 
 /* ============== RESPONSIVE ============== */
 @media (max-width: 1024px) {
@@ -1250,6 +1299,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   .proof-teaser-grid { grid-template-columns: 1fr; }
   .property-map-panel { grid-template-columns: 1fr; }
   .property-grid { grid-template-columns: repeat(2, 1fr); }
+  .transaction-list { grid-template-columns: 1fr; }
   .geo-grid { grid-template-columns: 1fr; }
   .case-body { grid-template-columns: 1fr; }
   .case-stats { border-left: none; border-top: 1px solid var(--rule-2); padding-left: 0; padding-top: var(--s-4); }
