@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Active Properties — Matthews Commercial Properties</title>
+    <meta name="description" content="A page concept for Matthews Commercial Properties active listings with filterable property cards and a listing map." />
+    <meta name="theme-color" content="#0f2942" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Libre+Franklin:wght@400..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="page-connecticut-reach">
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a href="connecticut-reach.html" class="brand" aria-label="Matthews Commercial Properties home">
+          <img class="brand-logo" src="assets/matthews-logo.jpg" alt="Matthews Commercial Properties" width="1935" height="1080" />
+        </a>
+        <nav class="primary-nav" aria-label="Primary">
+          <ul>
+            <li><a href="properties-connecticut.html">Properties</a></li>
+            <li><a href="connecticut-reach.html#services">Services</a></li>
+            <li><a href="transactions-connecticut.html">Recent Transactions</a></li>
+            <li><a href="brokers-connecticut.html">Brokers</a></li>
+            <li><a href="connecticut-reach.html#about">About</a></li>
+          </ul>
+        </nav>
+        <div class="header-cta">
+          <a class="phone-link" href="tel:+12037535800"><span class="phone-dot" aria-hidden="true"></span>(203) 753&#8209;5800</a>
+          <a class="btn btn-primary" href="connecticut-reach.html#contact">Talk to a broker</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="subpage-hero">
+        <div class="container">
+          <span class="kicker">Properties</span>
+          <h1>Active listings should have their own searchable page.</h1>
+          <p>
+            The homepage can show a few featured listings, but buyers, tenants, and investors need a
+            dedicated inventory page with photos, map pins, property facts, brochures, and direct
+            broker contact.
+          </p>
+          <nav class="subpage-tabs" aria-label="Page concepts">
+            <a class="is-active" href="properties-connecticut.html">Properties</a>
+            <a href="transactions-connecticut.html">Transactions</a>
+            <a href="brokers-connecticut.html">Brokers</a>
+            <a href="connecticut-reach.html">Homepage</a>
+          </nav>
+        </div>
+      </section>
+
+      <section class="section section-dark" id="properties">
+        <div class="container">
+          <header class="section-head section-head-row">
+            <div>
+              <span class="kicker kicker-light">Listing search</span>
+              <h2>Map, filters, photos, and shareable property pages.</h2>
+              <p class="section-lead">
+                This page would eventually be CMS-driven. Brokers should be able to add a property,
+                upload photos and a brochure, assign a broker, and publish without developer help.
+              </p>
+            </div>
+            <div class="filter-bar" role="tablist" aria-label="Filter properties by type">
+              <button class="chip is-active" role="tab" aria-selected="true" data-filter="all">All</button>
+              <button class="chip" role="tab" aria-selected="false" data-filter="industrial">Industrial / Flex</button>
+              <button class="chip" role="tab" aria-selected="false" data-filter="medical">Medical Office</button>
+              <button class="chip" role="tab" aria-selected="false" data-filter="retail">Retail</button>
+              <button class="chip" role="tab" aria-selected="false" data-filter="land">Land</button>
+              <button class="chip" role="tab" aria-selected="false" data-filter="investment">Investment</button>
+            </div>
+          </header>
+          <div class="property-map-panel">
+            <div class="property-map-copy">
+              <span class="kicker kicker-light">Map view</span>
+              <h3>Clients can browse by location, not a town menu.</h3>
+              <p>Map pins should filter with the cards and each property should have its own shareable URL.</p>
+            </div>
+            <div id="propertyMap" class="property-real-map" aria-label="Interactive map of featured active properties"></div>
+          </div>
+          <div class="property-grid" id="propertyGrid"></div>
+        </div>
+      </section>
+
+      <section class="subpage-section">
+        <div class="container subpage-grid-two">
+          <article class="subpage-panel">
+            <h2>Property detail page fields</h2>
+            <ul class="detail-list">
+              <li><span>Status</span><strong>For Sale / For Lease</strong></li>
+              <li><span>Facts</span><strong>Type, size, price, zoning</strong></li>
+              <li><span>Media</span><strong>Photos and brochure</strong></li>
+              <li><span>Contact</span><strong>Assigned broker</strong></li>
+            </ul>
+          </article>
+          <article class="subpage-panel">
+            <h2>CMS priority</h2>
+            <p>
+              The property workflow should be the easiest part of the CMS. If adding listings is
+              slow, the inventory will go stale. The final build should prioritize quick editing,
+              clean photo uploads, brochure replacement, and draft/publish control.
+            </p>
+            <a class="btn btn-primary" href="connecticut-reach.html#contact">Contact concept section</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-meta">
+        <small>© <span id="year"></span> Matthews Commercial Properties LLC. All rights reserved.</small>
+        <small><a href="connecticut-reach.html">Back to Connecticut reach homepage</a></small>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="js/connecticut-reach.js" defer></script>
+  </body>
+</html>
