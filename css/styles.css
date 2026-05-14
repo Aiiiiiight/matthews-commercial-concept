@@ -292,6 +292,17 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .hero-title em { font-style: normal; color: var(--clay); font-weight: 760; }
 
+.page-connecticut-reach .hero-title {
+  max-width: 11.5ch;
+  font-size: clamp(42px, 4.45vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -0.047em;
+}
+
+.page-connecticut-reach .hero-lede {
+  max-width: 56ch;
+}
+
 .hero-lede {
   max-width: 60ch;
   font-size: clamp(17px, 1.4vw, 19px);
